@@ -30,6 +30,7 @@ public class FrmCatalogos extends javax.swing.JFrame {
     public FrmCatalogos() {
         initComponents();
         cargaTablaProductos();
+        //cargaTablaFarmacias();
     }
 
     private void cargaTablaProductos(){
@@ -43,6 +44,20 @@ public class FrmCatalogos extends javax.swing.JFrame {
             modelo.setValueAt(p.getPuntos(), i, 3);
         }
         jTable1.setModel(modelo);
+    }
+    
+    private void cargaTablaFarmacias(){
+       List farmacias = elCtrl.recuperarFarmacias();
+       dtoFarmacia.setListaFarmacias(farmacias);
+       DefaultTableModel modelo = new DefaultTableModel(dtoFarmacia.getListaFarmacias().size(), 4);
+       for (int i = 0; i < dtoFarmacia.getListaFarmacias().size(); i++) {
+            Farmacia p = (Farmacia) dtoFarmacia.getListaFarmacias().get(i);
+            modelo.setValueAt(p.getCodigo(), i, 0);
+            modelo.setValueAt(p.getDescripcion(), i, 1);
+            modelo.setValueAt(p.getTelefono(), i, 2);
+        }
+        tablaFarmacias.setModel(modelo);
+        
     }
     
     /**
