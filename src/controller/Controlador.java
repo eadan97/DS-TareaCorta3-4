@@ -6,6 +6,7 @@
 package controller;
 
 import java.util.List;
+import model.Farmacia;
 import model.Producto;
 
 /**
@@ -16,6 +17,7 @@ public class Controlador {
 
     private DTOProductos dTOProductos;
     private GestorProductos gProductos;
+    private GestorFarmacias gFarmacias;
     
     public Controlador() {
         gProductos = new GestorProductos();
@@ -45,7 +47,24 @@ public class Controlador {
     public boolean recuperarProducto() {
         Producto elPrd =  gProductos.consultarProducto(dTOProductos.getUnProducto().getCodigo());
         dTOProductos.setUnProducto(elPrd);
-        return elPrd!=null;
-        
+        return elPrd!=null;   
+    }
+    
+    public boolean registarFarmacia(int codigo, String descripcion, String telefono){
+        return true;
+    }
+    
+    public boolean registrarFarmacia(DTOFarmacias dtoFarmacia){
+        System.out.println("La vista envío el dtoFarmacia para ser registrado");
+        return gFarmacias.crearFarmacia(dtoFarmacia.getFarmacia());
+    }
+    
+    public Farmacia recuperarFarmacia(DTOFarmacias dtoFarmacia){
+        Farmacia laFarm = gFarmacias.consultarFarmacia(dtoFarmacia.getFarmacia().getCodigo());
+        return laFarm;
+    }
+    
+    public List recuperarFarmacias(){
+        return gFarmacias.recuperar();
     }
 }
