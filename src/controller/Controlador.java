@@ -13,13 +13,23 @@ import model.Producto;
  * @author ericka
  */
 public class Controlador {
-
+    private static Controlador singleton;
     private DTOProductos dTOProductos;
     private GestorProductos gProductos;
     
-    public Controlador() {
+    private Controlador() {
         gProductos = new GestorProductos();
         dTOProductos = new DTOProductos();
+    }
+    
+    private synchronized static void setInstance(){
+        if(singleton==null)
+            singleton=new Controlador();
+    }
+    
+    public static Controlador getInstance(){
+        if(singleton==null) setInstance();
+        return singleton;
     }
 
     public DTOProductos getdTOProductos() {
