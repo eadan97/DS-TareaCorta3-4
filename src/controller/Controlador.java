@@ -14,15 +14,28 @@ import model.Producto;
  * @author ericka
  */
 public class Controlador {
-
+    private static Controlador singleton;
     private DTOProductos dTOProductos;
+    private DTOFarmacias DTOFarmacias;
     private GestorProductos gProductos;
     private GestorFarmacias gFarmacias;
     
-    public Controlador() {
+    private Controlador() {
         gProductos = new GestorProductos();
         gFarmacias = new GestorFarmacias();
         dTOProductos = new DTOProductos();
+        DTOFarmacias = new DTOFarmacias();
+    }
+    
+    private synchronized static void setInstance(){
+        if(singleton==null)
+            singleton=new Controlador();
+    }
+    
+    public static Controlador getInstance(){
+        if(singleton==null) 
+            setInstance();
+        return singleton;
     }
 
     public DTOProductos getdTOProductos() {
@@ -71,4 +84,18 @@ public class Controlador {
         dtoFarmacia.setListaFarmacias((List)gFarmacias.recuperar() );
         return dtoFarmacia;
     }
+
+    public DTOFarmacias getDTOFarmacias() {
+        return DTOFarmacias;
+    }
+    
+    public boolean registrarFactura(){
+        System.out.println("en el Controlador solicitando registro de factura");
+        
+        /**
+         * El sistema va y llama al gestor e ingresa la factura.
+         */
+        return true;
+    }
+    
 }

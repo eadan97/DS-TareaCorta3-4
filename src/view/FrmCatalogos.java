@@ -19,9 +19,9 @@ import model.Farmacia;
  */
 public class FrmCatalogos extends javax.swing.JFrame {
 
-    
-    private Controlador elCtrl = new Controlador();
+   
     private DTOFarmacias dtoFarmacia = new DTOFarmacias();
+    private Controlador elCtrl = Controlador.getInstance();
     
     
     /**
