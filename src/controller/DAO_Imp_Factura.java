@@ -5,34 +5,38 @@
  */
 package controller;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import model.Factura;
 import model.Farmacia;
 
 /**
  *
  * @author ericka
  */
-public class DAO_Imp_Farmacia implements DAOInterface{
+public class DAO_Imp_Factura implements DAOInterface{
 
-    private ArrayList<Farmacia> lFarm = new ArrayList<Farmacia>();
+    private ArrayList<Factura> lFact = new ArrayList<Factura>();
 
     
-    public DAO_Imp_Farmacia() {
+    public DAO_Imp_Factura() {
         for (int i = 1; i <= 10; i++) {
-            lFarm.add(new Farmacia(i, "Farm-"+i, ""));
+            lFact.add(new Factura(i, new Farmacia(), Calendar.getInstance().getTime()));
         } 
     }
 
     
     @Override
     public boolean registrar(Object obj) {
-        Farmacia elPrd = (Farmacia) obj;
+        Factura elPrd = (Factura) obj;
         
         System.out.println(" aqui se inserta la farmacia en la BD");
         Conexion.getInstance().getConexion();
         // la magia de la insercion
-        lFarm.add(elPrd);
+        lFact.add(elPrd);
         
         //cierra la conexion
         Conexion.getInstance().desconectar();
@@ -51,7 +55,7 @@ public class DAO_Imp_Farmacia implements DAOInterface{
         // simula que hace el select from.... 
         
         Conexion.getInstance().desconectar();
-        return lFarm;
+        return lFact;
                 
     }
 
@@ -61,12 +65,12 @@ public class DAO_Imp_Farmacia implements DAOInterface{
         Conexion.getInstance().getConexion();
 
         // la magia de la recuperacion por id
-        Farmacia elPrd = new Farmacia();
+        Factura elPrd = new Factura();
         elPrd.setCodigo(codigo);
-        int donde = lFarm.indexOf(elPrd);
+        int donde = lFact.indexOf(elPrd);
         
         Conexion.getInstance().desconectar();
-        return (donde != -1 ? lFarm.get(donde) : null);
+        return (donde != -1 ? lFact.get(donde) : null);
         
     }
     

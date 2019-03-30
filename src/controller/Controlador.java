@@ -15,11 +15,13 @@ import model.Producto;
 public class Controlador {
     private static Controlador singleton;
     private DTOProductos dTOProductos;
+    private DTOFarmacias DTOFarmacias;
     private GestorProductos gProductos;
     
     private Controlador() {
         gProductos = new GestorProductos();
         dTOProductos = new DTOProductos();
+        DTOFarmacias = new DTOFarmacias();
     }
     
     private synchronized static void setInstance(){
@@ -28,7 +30,8 @@ public class Controlador {
     }
     
     public static Controlador getInstance(){
-        if(singleton==null) setInstance();
+        if(singleton==null) 
+            setInstance();
         return singleton;
     }
 
@@ -58,4 +61,18 @@ public class Controlador {
         return elPrd!=null;
         
     }
+
+    public DTOFarmacias getDTOFarmacias() {
+        return DTOFarmacias;
+    }
+    
+    public boolean registrarFactura(){
+        System.out.println("en el Controlador solicitando registro de factura");
+        
+        /**
+         * El sistema va y llama al gestor e ingresa la factura.
+         */
+        return true;
+    }
+    
 }

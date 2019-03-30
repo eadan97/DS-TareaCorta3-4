@@ -17,7 +17,7 @@ import model.Producto;
 public class FrmCatalogos extends javax.swing.JFrame {
 
     
-    private Controlador elCtrl = new Controlador();
+    private Controlador elCtrl = Controlador.getInstance();
     
     
     /**
