@@ -5,89 +5,54 @@
  */
 package model;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import model.Producto;
+
 /**
  *
- * @author eadan
+ * @author aleta
  */
-public class Factura {
+public class Factura extends Documento {
+  
+    EncabezadoFactura Encabezado;
+    LineaFactura lineas;
+    private int cliente;
     private int codigo;
-    private Farmacia farmacia;
-    private Date fecha;
-    private HashMap<Producto, Integer> productos;
+    private String fecha;
+   private int codigoFactura;
+   private int producto;
+   private  int cantidad;
+   private int precio;
+   private int puntos;
+
+    public Factura(int i, Farmacia farmacia, Date time) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public Factura() {
-    }
-
-    public Factura(int codigo, Farmacia farmacia, Date fecha) {
-        this.codigo = codigo;
-        this.farmacia = farmacia;
-        this.fecha = fecha;
-        this.productos=new HashMap<Producto,Integer>();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public Factura(int codigo, Farmacia farmacia) {
-        this.codigo = codigo;
-        this.farmacia = farmacia;
-        this.fecha =  Calendar.getInstance().getTime();
-        this.productos=new HashMap<Producto,Integer>();
+    
+    public void DefinirEncabezado(){
+        Encabezado = new EncabezadoFactura(fecha,cliente,codigo);
+        System.out.println("se define el encabezado");
     }
-
-    public int getCodigo() {
-        return codigo;
+    public  void DefinirLineas(){
+        lineas= new LineaFactura();
+        
+    }
+ 
+    public void Factura(){       
+       
+        System.out.println("factura");
+        
     }
 
     public void setCodigo(int codigo) {
-        this.codigo = codigo;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Farmacia getFarmacia() {
-        return farmacia;
-    }
 
-    public void setFarmacia(Farmacia farmacia) {
-        this.farmacia = farmacia;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public HashMap<Producto,Integer> getListaProductos() {
-        return productos;
-    }
-
-    public void addProducto(Producto producto, int cantidad) {
-        if(productos.containsKey(producto))
-            productos.put(producto, productos.get(producto)+cantidad);
-        else
-            productos.put(producto, cantidad);
-    }
-
-    @Override
-    public String toString() {
-        return "Factura{" + "codigo=" + codigo + ", farmacia=" + farmacia.getCodigo() + ", fecha=" + fecha.toString() + ", productos=" + productos.size() + '\n';
-    }
-
-       @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Factura other = (Factura) obj;
-        if (this.codigo != other.codigo) {
-            return false;
-        }
-        return true;
-    }
+    
+           
 }
