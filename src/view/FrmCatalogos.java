@@ -30,7 +30,7 @@ public class FrmCatalogos extends javax.swing.JFrame {
     public FrmCatalogos() {
         initComponents();
         cargaTablaProductos();
-        //cargaTablaFarmacias();
+        cargaTablaFarmacias();
     }
 
     private void cargaTablaProductos(){
@@ -47,8 +47,7 @@ public class FrmCatalogos extends javax.swing.JFrame {
     }
     
     private void cargaTablaFarmacias(){
-       List farmacias = elCtrl.recuperarFarmacias();
-       dtoFarmacia.setListaFarmacias(farmacias);
+       dtoFarmacia = elCtrl.recuperarFarmacias(dtoFarmacia);
        DefaultTableModel modelo = new DefaultTableModel(dtoFarmacia.getListaFarmacias().size(), 4);
        for (int i = 0; i < dtoFarmacia.getListaFarmacias().size(); i++) {
             Farmacia p = (Farmacia) dtoFarmacia.getListaFarmacias().get(i);
@@ -57,7 +56,6 @@ public class FrmCatalogos extends javax.swing.JFrame {
             modelo.setValueAt(p.getTelefono(), i, 2);
         }
         tablaFarmacias.setModel(modelo);
-        
     }
     
     /**
@@ -367,6 +365,8 @@ public class FrmCatalogos extends javax.swing.JFrame {
         boolean resultado = elCtrl.registrarFarmacia(dtoFarmacia);
 
         System.out.println(resultado? "ingreso farmacia" : "problemas para ingresar farmacia");
+        
+        cargaTablaFarmacias();
 
     }//GEN-LAST:event_btnRegistrarFarmaciaActionPerformed
 
@@ -375,6 +375,7 @@ public class FrmCatalogos extends javax.swing.JFrame {
         int codigoFarmacia = Integer.parseInt(txtCodigoFarmacia.getText());
         dtoFarmacia.getFarmacia().setCodigo(codigoFarmacia);
         Farmacia laFarm = elCtrl.recuperarFarmacia(dtoFarmacia);
+        dtoFarmacia.setFarmacia(laFarm);
         if (laFarm != null){
             dtoFarmacia.setFarmacia(laFarm);
             txtDescripcionFarmacia.setText(dtoFarmacia.getFarmacia().getDescripcion());

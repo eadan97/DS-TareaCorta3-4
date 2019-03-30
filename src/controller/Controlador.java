@@ -21,6 +21,7 @@ public class Controlador {
     
     public Controlador() {
         gProductos = new GestorProductos();
+        gFarmacias = new GestorFarmacias();
         dTOProductos = new DTOProductos();
     }
 
@@ -56,7 +57,9 @@ public class Controlador {
     
     public boolean registrarFarmacia(DTOFarmacias dtoFarmacia){
         System.out.println("La vista envío el dtoFarmacia para ser registrado");
-        return gFarmacias.crearFarmacia(dtoFarmacia.getFarmacia());
+        System.out.println(dtoFarmacia.getFarmacia().getDescripcion());
+        Farmacia laFarm = dtoFarmacia.getFarmacia();
+        return gFarmacias.crearFarmacia(laFarm);
     }
     
     public Farmacia recuperarFarmacia(DTOFarmacias dtoFarmacia){
@@ -64,7 +67,8 @@ public class Controlador {
         return laFarm;
     }
     
-    public List recuperarFarmacias(){
-        return gFarmacias.recuperar();
+    public DTOFarmacias recuperarFarmacias(DTOFarmacias dtoFarmacia){
+        dtoFarmacia.setListaFarmacias((List)gFarmacias.recuperar() );
+        return dtoFarmacia;
     }
 }

@@ -16,8 +16,9 @@ public class GestorFarmacias {
         System.out.println("en el Gestor de farmacias solicitando registro de farmacia");
         return elDAO.registrar(pFarmacia);
     }
+
     
-    public List recuperar(){
+     public List recuperar(){
         return elDAO.recuperar();
     }
 
