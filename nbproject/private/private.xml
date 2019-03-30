@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/GestorProductos.java</file>
-            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/DAOInterface.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/model/Farmacia.java</file>
             <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/GestorFarmacias.java</file>
             <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/DTOFarmacias.java</file>
             <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/DAO_Imp_Farmacia.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/DAO_Imp_Productos.java</file>
             <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/Controlador.java</file>
             <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/view/FrmCatalogos.java</file>
         </group>

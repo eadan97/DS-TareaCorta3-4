@@ -19,7 +19,7 @@ public class DAO_Imp_Farmacia implements DAOInterface{
     
     public DAO_Imp_Farmacia() {
         for (int i = 1; i <= 10; i++) {
-            lFarm.add(new Farmacia(i, "Farma-"+i,"Tel:"+i*100));
+            lFarm.add(new Farmacia(i,"Farma-"+i,"Tel:"+i));
         } 
     }
 
@@ -57,6 +57,7 @@ public class DAO_Imp_Farmacia implements DAOInterface{
         Farmacia laFarm = new Farmacia();
         laFarm.setCodigo(codigo);
         int donde = lFarm.indexOf(laFarm);
+        System.out.println("DOnde: "+donde);
         
         Conexion.getInstance().desconectar();
         return (donde != -1 ? lFarm.get(donde) : null);

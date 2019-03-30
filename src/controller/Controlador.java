@@ -62,9 +62,9 @@ public class Controlador {
         return gFarmacias.crearFarmacia(laFarm);
     }
     
-    public Farmacia recuperarFarmacia(DTOFarmacias dtoFarmacia){
-        Farmacia laFarm = gFarmacias.consultarFarmacia(dtoFarmacia.getFarmacia().getCodigo());
-        return laFarm;
+    public DTOFarmacias recuperarFarmacia(DTOFarmacias dtoFarmacia){
+        dtoFarmacia.setFarmacia(gFarmacias.consultarFarmacia(dtoFarmacia.getFarmacia().getCodigo()));
+        return dtoFarmacia;
     }
     
     public DTOFarmacias recuperarFarmacias(DTOFarmacias dtoFarmacia){

@@ -374,8 +374,8 @@ public class FrmCatalogos extends javax.swing.JFrame {
         // TODO add your handling code here:
         int codigoFarmacia = Integer.parseInt(txtCodigoFarmacia.getText());
         dtoFarmacia.getFarmacia().setCodigo(codigoFarmacia);
-        Farmacia laFarm = elCtrl.recuperarFarmacia(dtoFarmacia);
-        dtoFarmacia.setFarmacia(laFarm);
+        dtoFarmacia = elCtrl.recuperarFarmacia(dtoFarmacia);
+        Farmacia laFarm = dtoFarmacia.getFarmacia();
         if (laFarm != null){
             dtoFarmacia.setFarmacia(laFarm);
             txtDescripcionFarmacia.setText(dtoFarmacia.getFarmacia().getDescripcion());
