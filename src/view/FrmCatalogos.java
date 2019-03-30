@@ -6,8 +6,11 @@
 package view;
 
 import controller.Controlador;
+import controller.DTOFarmacias;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.Producto;
+import model.Farmacia;
 
 
 /**
@@ -18,6 +21,7 @@ public class FrmCatalogos extends javax.swing.JFrame {
 
     
     private Controlador elCtrl = new Controlador();
+    private DTOFarmacias dtoFarmacia = new DTOFarmacias();
     
     
     /**
@@ -26,6 +30,7 @@ public class FrmCatalogos extends javax.swing.JFrame {
     public FrmCatalogos() {
         initComponents();
         cargaTablaProductos();
+        cargaTablaFarmacias();
     }
 
     private void cargaTablaProductos(){
@@ -39,6 +44,18 @@ public class FrmCatalogos extends javax.swing.JFrame {
             modelo.setValueAt(p.getPuntos(), i, 3);
         }
         jTable1.setModel(modelo);
+    }
+    
+    private void cargaTablaFarmacias(){
+       dtoFarmacia = elCtrl.recuperarFarmacias(dtoFarmacia);
+       DefaultTableModel modelo = new DefaultTableModel(dtoFarmacia.getListaFarmacias().size(), 4);
+       for (int i = 0; i < dtoFarmacia.getListaFarmacias().size(); i++) {
+            Farmacia p = (Farmacia) dtoFarmacia.getListaFarmacias().get(i);
+            modelo.setValueAt(p.getCodigo(), i, 0);
+            modelo.setValueAt(p.getDescripcion(), i, 1);
+            modelo.setValueAt(p.getTelefono(), i, 2);
+        }
+        tablaFarmacias.setModel(modelo);
     }
     
     /**
@@ -64,6 +81,18 @@ public class FrmCatalogos extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JButton();
         lblPuntos = new javax.swing.JLabel();
         txtPuntos = new javax.swing.JTextField();
+        panelFarmacias = new javax.swing.JPanel();
+        lblCod = new javax.swing.JLabel();
+        txtCodigoFarmacia = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        lbldescripcion = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        txtDescripcionFarmacia = new javax.swing.JTextField();
+        txtTelefonoFarmacia = new javax.swing.JTextField();
+        btnRegistrarFarmacia = new javax.swing.JButton();
+        btnConsultarFarmacia = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaFarmacias = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -176,6 +205,105 @@ public class FrmCatalogos extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Productos", panelProductos);
 
+        lblCod.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblCod.setText("Código:");
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setText("FARMACIAS");
+
+        lbldescripcion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbldescripcion.setText("Descripción:");
+
+        lblTelefono.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblTelefono.setText("Teléfono:");
+
+        btnRegistrarFarmacia.setText("REGISTRAR FARMACIA");
+        btnRegistrarFarmacia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarFarmaciaActionPerformed(evt);
+            }
+        });
+
+        btnConsultarFarmacia.setText("CONSULTAR FARMACIA");
+        btnConsultarFarmacia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarFarmaciaActionPerformed(evt);
+            }
+        });
+
+        tablaFarmacias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Código", "Descripción", "Teléfono"
+            }
+        ));
+        jScrollPane3.setViewportView(tablaFarmacias);
+
+        javax.swing.GroupLayout panelFarmaciasLayout = new javax.swing.GroupLayout(panelFarmacias);
+        panelFarmacias.setLayout(panelFarmaciasLayout);
+        panelFarmaciasLayout.setHorizontalGroup(
+            panelFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFarmaciasLayout.createSequentialGroup()
+                .addGroup(panelFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFarmaciasLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(panelFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFarmaciasLayout.createSequentialGroup()
+                                .addComponent(lblCod)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCodigoFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFarmaciasLayout.createSequentialGroup()
+                                .addComponent(lblTelefono)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTelefonoFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(58, 58, 58)
+                        .addGroup(panelFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFarmaciasLayout.createSequentialGroup()
+                                .addComponent(lbldescripcion)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDescripcionFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)))
+                    .addGroup(panelFarmaciasLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(btnRegistrarFarmacia)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnConsultarFarmacia))
+                    .addGroup(panelFarmaciasLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
+        panelFarmaciasLayout.setVerticalGroup(
+            panelFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFarmaciasLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(panelFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCod)
+                    .addComponent(txtCodigoFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbldescripcion)
+                    .addComponent(txtDescripcionFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(panelFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTelefono)
+                    .addComponent(txtTelefonoFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63)
+                .addGroup(panelFarmaciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarFarmacia)
+                    .addComponent(btnConsultarFarmacia))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Farmacias", panelFarmacias);
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 430));
 
         pack();
@@ -224,6 +352,41 @@ public class FrmCatalogos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
+    private void btnRegistrarFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarFarmaciaActionPerformed
+        // TODO add your handling code here:
+        int codigoFarmacia = Integer.parseInt(txtCodigoFarmacia.getText());
+        String descripcionFarmacia = txtDescripcionFarmacia.getText();
+        String telefonoFarmacia = txtTelefonoFarmacia.getText();
+
+        dtoFarmacia.getFarmacia().setCodigo(codigoFarmacia);
+        dtoFarmacia.getFarmacia().setDescripcion(descripcionFarmacia);
+        dtoFarmacia.getFarmacia().setTelefono(telefonoFarmacia);
+
+        boolean resultado = elCtrl.registrarFarmacia(dtoFarmacia);
+
+        System.out.println(resultado? "ingreso farmacia" : "problemas para ingresar farmacia");
+        
+        cargaTablaFarmacias();
+
+    }//GEN-LAST:event_btnRegistrarFarmaciaActionPerformed
+
+    private void btnConsultarFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarFarmaciaActionPerformed
+        // TODO add your handling code here:
+        int codigoFarmacia = Integer.parseInt(txtCodigoFarmacia.getText());
+        dtoFarmacia.getFarmacia().setCodigo(codigoFarmacia);
+        dtoFarmacia = elCtrl.recuperarFarmacia(dtoFarmacia);
+        Farmacia laFarm = dtoFarmacia.getFarmacia();
+        if (laFarm != null){
+            dtoFarmacia.setFarmacia(laFarm);
+            txtDescripcionFarmacia.setText(dtoFarmacia.getFarmacia().getDescripcion());
+            txtTelefonoFarmacia.setText(dtoFarmacia.getFarmacia().getTelefono());
+        }
+        else{
+            System.out.println("reportar que la farmacia no existe.");
+        }
+
+    }//GEN-LAST:event_btnConsultarFarmaciaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,18 +424,30 @@ public class FrmCatalogos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnConsultarFarmacia;
+    private javax.swing.JButton btnRegistrarFarmacia;
     private javax.swing.JButton btnRegistrarPrd;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCod;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblPuntos;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblUnidades;
+    private javax.swing.JLabel lbldescripcion;
+    private javax.swing.JPanel panelFarmacias;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JSpinner spUnidades;
+    private javax.swing.JTable tablaFarmacias;
+    private javax.swing.JTextField txtCodigoFarmacia;
     private javax.swing.JTextField txtCodigoPrd;
     private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtDescripcionFarmacia;
     private javax.swing.JTextField txtPuntos;
+    private javax.swing.JTextField txtTelefonoFarmacia;
     // End of variables declaration//GEN-END:variables
 }
