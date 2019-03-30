@@ -19,7 +19,7 @@ public class DAO_Imp_Farmacia implements DAOInterface{
     
     public DAO_Imp_Farmacia() {
         for (int i = 1; i <= 10; i++) {
-            lFarm.add(new Farmacia(i, "Farm-"+i, ""));
+            lFarm.add(new Farmacia(i, "Farm-"+i,"Tel: "+i));
         } 
     }
 
