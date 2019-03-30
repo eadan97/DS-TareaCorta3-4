@@ -57,7 +57,6 @@ public class DAO_Imp_Productos implements DAOInterface{
     @Override
     public Object recuperar(Object clave) {
         int codigo = (int) clave;
-        System.out.println("CodProd: "+codigo);
         Conexion.getInstance().getConexion();
 
         // la magia de la recuperacion por id
