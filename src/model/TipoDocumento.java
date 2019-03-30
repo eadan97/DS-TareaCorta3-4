@@ -5,7 +5,10 @@
  */
 package model;
 
-
-public class facturaImpl extends factura {
-    
+/**
+ *
+ * @author aleta
+ */
+public enum TipoDocumento {
+    factura,canje
 }

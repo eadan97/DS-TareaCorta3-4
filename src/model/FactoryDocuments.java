@@ -11,14 +11,14 @@ package model;
  */
 public class FactoryDocuments {
  
-      public static Documento getDocumento(Documento cualDocumento){
+      public static Documento getDocumento(TipoDocumento cualDocumento){
         Documento unDocumento = null;
         switch (cualDocumento){
             case factura :{
                 unDocumento = new factura();            
                 break;
             }
-            case Canje: {
+            case canje: {
                 System.out.println("Canje todavia no disponible");
                 break;
             }

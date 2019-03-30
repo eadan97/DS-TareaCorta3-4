@@ -13,21 +13,33 @@ import java.util.Date;
  */
 public class factura extends Documento {
   
-
-    Date fecha;
-    int Farmacia;
-    int Cliente;
-    int CodigoFactura;
+    EncabezadoFactura Encabezado;
     LineaFactura lineas;
-
- 
-  
+    private int cliente;
+    private int codigo;
+    private String fecha;
+   private int codigoFactura;
+   private int producto;
+   private  int cantidad;
+   private int precio;
+   private int puntos;
+    
+    
+    public void DefinirEncabezado(){
+        Encabezado = new EncabezadoFactura(fecha,cliente,codigo);
+        System.out.println("se define el encabezado");
+    }
+    public  void DefinirLineas(){
+        lineas= new LineaFactura();
+        
+    }
  
     public void factura(){       
        
         System.out.println("factura");
         
     }
+
 
     
            

@@ -9,12 +9,9 @@ package model;
  *
  * @author aleta
  */
-public enum Documento {
- factura,Canje
- 
+public abstract class Documento {
 
-//public abstract void factura();
-//public abstract void canje();    
+    
     
     
 }

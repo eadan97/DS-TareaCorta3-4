@@ -11,20 +11,20 @@ package model;
  */
 public class  LineaFactura {
     
-    int codigoFactura;
-    int producto;
-    int cantidad;
-    int precio;
-    int puntos;
+   private int codigoFactura;
+   private int producto;
+   private  int cantidad;
+   private int precio;
+   private int puntos;
     
         
     public void LineaFactura(int codigoFactura,int producto,int cantidad, int precio, int puntos){
         
-         codigoFactura=this.codigoFactura;
-         producto= this.producto; 
-         cantidad=this.cantidad;
-         precio=this.precio;
-         puntos=this.puntos;
+         this.codigoFactura= codigoFactura;
+         this.producto=producto; 
+         this.cantidad=cantidad;
+         this.precio=precio;
+         this.puntos=puntos;
         
     }
 
