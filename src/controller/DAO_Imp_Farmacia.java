@@ -19,15 +19,6 @@ public class DAO_Imp_Farmacia implements DAOInterface{
     
     public DAO_Imp_Farmacia() {
         for (int i = 1; i <= 10; i++) {
-            lFarm.add(new Farmacia(i,"Farma-"+i,"Tel:"+i));
-        } 
-    }
-
-    private ArrayList<Farmacia> lFarm = new ArrayList<Farmacia>();
-
-    
-    public DAO_Imp_Farmacia() {
-        for (int i = 1; i <= 10; i++) {
             lFarm.add(new Farmacia(i, "Farm-"+i, ""));
         } 
     }
@@ -40,16 +31,7 @@ public class DAO_Imp_Farmacia implements DAOInterface{
         System.out.println(" aqui se inserta la farmacia en la BD");
         Conexion.getInstance().getConexion();
         // la magia de la insercion
-<<<<<<< HEAD
-        lFarm.add(laFarmacia);
-=======
         lFarm.add(elPrd);
-        
-        //cierra la conexion
-        Conexion.getInstance().desconectar();
-        
-        return true;
->>>>>>> 6dafecf4b659f5ec2998333b9888b19c84a5076f
         
         //cierra la conexion
         Conexion.getInstance().desconectar();
@@ -59,23 +41,13 @@ public class DAO_Imp_Farmacia implements DAOInterface{
 
     @Override
     public List recuperar() {
-<<<<<<< HEAD
-=======
-        
->>>>>>> 6dafecf4b659f5ec2998333b9888b19c84a5076f
         Conexion.getInstance().getConexion();
         // la magia de la recuperacion
         
         // simula que hace el select from.... 
-<<<<<<< HEAD
-        Conexion.getInstance().desconectar();
-        return lFarm;
-=======
         
         Conexion.getInstance().desconectar();
         return lFarm;
-                
->>>>>>> 6dafecf4b659f5ec2998333b9888b19c84a5076f
     }
 
     @Override
@@ -84,15 +56,6 @@ public class DAO_Imp_Farmacia implements DAOInterface{
         Conexion.getInstance().getConexion();
 
         // la magia de la recuperacion por id
-<<<<<<< HEAD
-        Farmacia laFarm = new Farmacia();
-        laFarm.setCodigo(codigo);
-        int donde = lFarm.indexOf(laFarm);
-        System.out.println("DOnde: "+donde);
-        
-        Conexion.getInstance().desconectar();
-        return (donde != -1 ? lFarm.get(donde) : null);
-=======
         Farmacia elPrd = new Farmacia();
         elPrd.setCodigo(codigo);
         int donde = lFarm.indexOf(elPrd);
@@ -100,7 +63,6 @@ public class DAO_Imp_Farmacia implements DAOInterface{
         Conexion.getInstance().desconectar();
         return (donde != -1 ? lFarm.get(donde) : null);
         
->>>>>>> 6dafecf4b659f5ec2998333b9888b19c84a5076f
     }
     
 }

@@ -48,9 +48,9 @@ public class FrmCatalogos extends javax.swing.JFrame {
     
     private void cargaTablaFarmacias(){
        dtoFarmacia = elCtrl.recuperarFarmacias(dtoFarmacia);
-       DefaultTableModel modelo = new DefaultTableModel(dtoFarmacia.getListaFarmacias().size(), 4);
-       for (int i = 0; i < dtoFarmacia.getListaFarmacias().size(); i++) {
-            Farmacia p = (Farmacia) dtoFarmacia.getListaFarmacias().get(i);
+       DefaultTableModel modelo = new DefaultTableModel(dtoFarmacia.getLasFarmacias().size(), 4);
+       for (int i = 0; i < dtoFarmacia.getLasFarmacias().size(); i++) {
+            Farmacia p = (Farmacia) dtoFarmacia.getLasFarmacias().get(i);
             modelo.setValueAt(p.getCodigo(), i, 0);
             modelo.setValueAt(p.getDescripcion(), i, 1);
             modelo.setValueAt(p.getTelefono(), i, 2);
@@ -358,9 +358,9 @@ public class FrmCatalogos extends javax.swing.JFrame {
         String descripcionFarmacia = txtDescripcionFarmacia.getText();
         String telefonoFarmacia = txtTelefonoFarmacia.getText();
 
-        dtoFarmacia.getFarmacia().setCodigo(codigoFarmacia);
-        dtoFarmacia.getFarmacia().setDescripcion(descripcionFarmacia);
-        dtoFarmacia.getFarmacia().setTelefono(telefonoFarmacia);
+        dtoFarmacia.getUnaFarmacia().setCodigo(codigoFarmacia);
+        dtoFarmacia.getUnaFarmacia().setDescripcion(descripcionFarmacia);
+        dtoFarmacia.getUnaFarmacia().setTelefono(telefonoFarmacia);
 
         boolean resultado = elCtrl.registrarFarmacia(dtoFarmacia);
 
@@ -373,13 +373,13 @@ public class FrmCatalogos extends javax.swing.JFrame {
     private void btnConsultarFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarFarmaciaActionPerformed
         // TODO add your handling code here:
         int codigoFarmacia = Integer.parseInt(txtCodigoFarmacia.getText());
-        dtoFarmacia.getFarmacia().setCodigo(codigoFarmacia);
+        dtoFarmacia.getUnaFarmacia().setCodigo(codigoFarmacia);
         dtoFarmacia = elCtrl.recuperarFarmacia(dtoFarmacia);
-        Farmacia laFarm = dtoFarmacia.getFarmacia();
+        Farmacia laFarm = dtoFarmacia.getUnaFarmacia();
         if (laFarm != null){
-            dtoFarmacia.setFarmacia(laFarm);
-            txtDescripcionFarmacia.setText(dtoFarmacia.getFarmacia().getDescripcion());
-            txtTelefonoFarmacia.setText(dtoFarmacia.getFarmacia().getTelefono());
+            dtoFarmacia.setUnaFarmacia(laFarm);
+            txtDescripcionFarmacia.setText(dtoFarmacia.getUnaFarmacia().getDescripcion());
+            txtTelefonoFarmacia.setText(dtoFarmacia.getUnaFarmacia().getTelefono());
         }
         else{
             System.out.println("reportar que la farmacia no existe.");

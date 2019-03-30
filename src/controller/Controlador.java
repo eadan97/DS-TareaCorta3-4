@@ -70,18 +70,18 @@ public class Controlador {
     
     public boolean registrarFarmacia(DTOFarmacias dtoFarmacia){
         System.out.println("La vista envío el dtoFarmacia para ser registrado");
-        System.out.println(dtoFarmacia.getFarmacia().getDescripcion());
-        Farmacia laFarm = dtoFarmacia.getFarmacia();
+        System.out.println(dtoFarmacia.getUnaFarmacia().getDescripcion());
+        Farmacia laFarm = dtoFarmacia.getUnaFarmacia();
         return gFarmacias.crearFarmacia(laFarm);
     }
     
     public DTOFarmacias recuperarFarmacia(DTOFarmacias dtoFarmacia){
-        dtoFarmacia.setFarmacia(gFarmacias.consultarFarmacia(dtoFarmacia.getFarmacia().getCodigo()));
+        dtoFarmacia.setUnaFarmacia(gFarmacias.consultarFarmacia(dtoFarmacia.getUnaFarmacia().getCodigo()));
         return dtoFarmacia;
     }
     
     public DTOFarmacias recuperarFarmacias(DTOFarmacias dtoFarmacia){
-        dtoFarmacia.setListaFarmacias((List)gFarmacias.recuperar() );
+        dtoFarmacia.setLasFarmacias((List)gFarmacias.recuperar() );
         return dtoFarmacia;
     }
 
