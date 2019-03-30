@@ -14,9 +14,8 @@ import model.Farmacia;
  * @author ericka
  */
 public class DAO_Imp_Farmacia implements DAOInterface{
-
+    
     private ArrayList<Farmacia> lFarm = new ArrayList<Farmacia>();
-
     
     public DAO_Imp_Farmacia() {
         for (int i = 1; i <= 10; i++) {
@@ -38,13 +37,10 @@ public class DAO_Imp_Farmacia implements DAOInterface{
         Conexion.getInstance().desconectar();
         
         return true;
-        
-        
     }
 
     @Override
     public List recuperar() {
-        
         Conexion.getInstance().getConexion();
         // la magia de la recuperacion
         
@@ -52,7 +48,6 @@ public class DAO_Imp_Farmacia implements DAOInterface{
         
         Conexion.getInstance().desconectar();
         return lFarm;
-                
     }
 
     @Override

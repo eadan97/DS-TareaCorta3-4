@@ -7,14 +7,12 @@ package controller;
 
 import java.util.List;
 import model.Farmacia;
-import model.Producto;
 
 /**
  *
- * @author ericka
+ * @author Usuario
  */
 public class DTOFarmacias {
-    
     private Farmacia unaFarmacia;
     private String usuario;
     private List lasFarmacias = null;

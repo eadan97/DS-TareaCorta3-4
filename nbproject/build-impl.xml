@@ -142,12 +142,16 @@ is divided into following sections:
                 <isset property="javac.profile"/>
                 <length length="0" string="${javac.profile}" when="greater"/>
 <<<<<<< HEAD
+                <matches pattern="((1\.[89])|9)(\..*)?" string="${javac.source}"/>
+=======
+<<<<<<< HEAD
                 <not>
                     <matches pattern="1\.[0-7](\..*)?" string="${javac.source}"/>
                 </not>
 =======
                 <matches pattern="((1\.[89])|9)(\..*)?" string="${javac.source}"/>
 >>>>>>> tapia
+>>>>>>> 6dafecf4b659f5ec2998333b9888b19c84a5076f
             </and>
         </condition>
         <condition property="do.archive">
@@ -916,6 +920,8 @@ is divided into following sections:
             <element name="customize" optional="true"/>
             <sequential>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
                 <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true" module="@{modulename}">
                     <classpath>
                         <path path="@{classpath}"/>
@@ -928,6 +934,7 @@ is divided into following sections:
                         <path path="@{upgrademodulepath}"/>
                     </upgrademodulepath>
 =======
+>>>>>>> 6dafecf4b659f5ec2998333b9888b19c84a5076f
                 <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true">
                     <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>
                     <jvmarg line="${debug-args-line}"/>

@@ -3,6 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/GestorFarmacias.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/DTOFarmacias.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/DAO_Imp_Farmacia.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/DAO_Imp_Productos.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/controller/Controlador.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DS-TareaCorta3-4/src/view/FrmCatalogos.java</file>
+=======
             <file>file:/D:/TEC/Diseño%20de%20Software/DS-TareaCorta3-4/src/view/FrmFacturas.java</file>
             <file>file:/D:/TEC/Diseño%20de%20Software/DS-TareaCorta3-4/src/controller/DAO_Imp_Productos.java</file>
             <file>file:/D:/TEC/Diseño%20de%20Software/DS-TareaCorta3-4/src/controller/Conexion.java</file>
@@ -16,6 +24,7 @@
             <file>file:/D:/TEC/Diseño%20de%20Software/DS-TareaCorta3-4/src/controller/DTOProductos.java</file>
             <file>file:/D:/TEC/Diseño%20de%20Software/DS-TareaCorta3-4/src/model/Factura.java</file>
             <file>file:/D:/TEC/Diseño%20de%20Software/DS-TareaCorta3-4/src/controller/DAO_Imp_Factura.java</file>
+>>>>>>> 6dafecf4b659f5ec2998333b9888b19c84a5076f
         </group>
     </open-files>
 </project-private>
