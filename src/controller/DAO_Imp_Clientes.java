@@ -16,13 +16,22 @@ import model.Cliente;
 public class DAO_Imp_Clientes implements DAOInterface {
     
     private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    
+    public DAO_Imp_Clientes() {
+        for (int i = 1; i <= 10; i++) {
+            clientes.add(new Cliente("Nom: "+i,"Apel: "+i,"Ced: "+i,"tel: "+1,"Correo: "+1,i));
+        } 
+    }
 
     @Override
     public boolean registrar(Object obj) {
+        
+        Cliente elCli = (Cliente) obj;
+        System.out.println(" aqui se inserta el cliente en la BD");
         Conexion.getInstance().getConexion();
         clientes.add((Cliente) obj);
         
-        System.out.println("DAO_Imp_Clientes.registrar("+obj+")");
+        
         Conexion.getInstance().desconectar();
         return true;
     }
@@ -30,24 +39,24 @@ public class DAO_Imp_Clientes implements DAOInterface {
     @Override
     public List recuperar() {
         Conexion.getInstance().getConexion();
+        // la magia de la recuperacion
         
-        System.out.println("DAO_Imp_Clientes.recuperar()");
+        // simula que hace el select from.... 
         Conexion.getInstance().desconectar();
         return clientes;
     }
 
     @Override
     public Object recuperar(Object clave) {
+        String codigo = (String) clave;
         Conexion.getInstance().getConexion();
         
-        System.out.println("DAO_Imp_Clientes.recuperar("+clave+")");
+        // la magia de la recuperacion por id
+        Cliente elCli = new Cliente();
+        elCli.setCedula(codigo);
+        int donde = clientes.indexOf(elCli);
+        
         Conexion.getInstance().desconectar();
-        for (Cliente cliente : clientes) {
-            if (cliente.getCedula()==clave) {
-                return cliente;
-            }
-            
-        }
-        return null;
+        return (donde != -1 ? clientes.get(donde) : null);
     }
 }
