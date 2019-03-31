@@ -6,6 +6,7 @@
 package controller;
 
 import java.util.List;
+import model.Cliente;
 import model.Farmacia;
 import model.Producto;
 
@@ -19,10 +20,12 @@ public class Controlador {
     private DTOFarmacias DTOFarmacias;
     private GestorProductos gProductos;
     private GestorFarmacias gFarmacias;
+    private GestorClientes gClientes;
     
     private Controlador() {
         gProductos = new GestorProductos();
         gFarmacias = new GestorFarmacias();
+        gClientes = new GestorClientes();
         dTOProductos = new DTOProductos();
         DTOFarmacias = new DTOFarmacias();
     }
@@ -97,5 +100,21 @@ public class Controlador {
          */
         return true;
     }
+    public boolean registrarCliente(DTOClientes dtoCliente){
+        System.out.println("La vista envío el dtoCliente para ser registrado");
+        Cliente elClien = dtoCliente.getCliente();
+        return gClientes.crearCliente(elClien);
+    }
+    
+    public DTOClientes recuperarCliente(DTOClientes dtoCliente){
+        //dtoCliente.setCliente(gClientes.consultarClientes(dtoCliente.getCliente().getCedula()));
+        return dtoCliente;
+    }
+    
+    public DTOClientes  recuperarClientes(DTOClientes dtoClientes){
+        dtoClientes.setClientes((List)gClientes.recuperar() );
+        return dtoClientes;
+    }
+    
     
 }
