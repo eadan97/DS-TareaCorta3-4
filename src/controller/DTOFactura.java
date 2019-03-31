@@ -7,7 +7,6 @@ package controller;
 
 import java.util.List;
 import model.Factura;
-//import model.factura;
 import model.Farmacia;
 import model.Producto;
 
