@@ -21,7 +21,7 @@ public class GestorClientes {
         return elDAO.recuperar();
     }
 
-    public Cliente consultarFarmacia(int codigo) {
-        return (Cliente) elDAO.recuperar(codigo);
+    public Cliente consultarClientes(int cedula) {
+        return (Cliente) elDAO.recuperar(cedula);
     }   
 }

@@ -29,4 +29,11 @@ public class DTOClientes {
         this.cliente = cliente;
     }
     
+    public void setClientes(List clientes) {
+        this.clientes = clientes;
+    }
+    public List getClientes() {
+        return clientes;
+    }
+    
 }

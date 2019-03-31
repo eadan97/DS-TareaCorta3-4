@@ -6,6 +6,7 @@
 package view;
 
 import controller.Controlador;
+import controller.DTOClientes;
 import controller.DTOFarmacias;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +22,7 @@ public class FrmCatalogos extends javax.swing.JFrame {
 
    
     private DTOFarmacias dtoFarmacia = new DTOFarmacias();
+    private DTOClientes dtoCliente = new DTOClientes();
     private Controlador elCtrl = Controlador.getInstance();
     
     
@@ -329,6 +331,11 @@ public class FrmCatalogos extends javax.swing.JFrame {
         lblCorreoCliente.setText("Correo:");
 
         btnAgregarCliente.setText("Agregar");
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarClienteActionPerformed(evt);
+            }
+        });
 
         tableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -493,6 +500,29 @@ public class FrmCatalogos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnConsultarFarmaciaActionPerformed
+
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        // TODO add your handling code here:
+        
+        String cedulaCliente = txtCedulaCliente.getText();
+        String nombreCliente = txtNombreCliente.getText();
+        String apellidoCliente = txtApelllCliente.getText();
+        String telefonoCliente = txtTelCliente.getText();
+        String correoCliente = txtCorreoCliente.getText();
+
+        dtoCliente.getCliente().setCedula(cedulaCliente);
+        dtoCliente.getCliente().setNombre(nombreCliente);
+        dtoCliente.getCliente().setApellidos(apellidoCliente);
+        dtoCliente.getCliente().setTelefono(telefonoCliente);
+        dtoCliente.getCliente().setCorreo(correoCliente);
+
+
+        boolean resultado = elCtrl.registrarFarmacia(dtoFarmacia);
+
+        System.out.println(resultado? "ingreso farmacia" : "problemas para ingresar farmacia");
+        
+        cargaTablaFarmacias();
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     /**
      * @param args the command line arguments
